@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="Model1TargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_DEPARTMENTSet" EntityType="Model1.TB_DEPARTMENT" />
+          <EntitySet Name="TB_USERSSet" EntityType="Model1.TB_USERS" />
+          <EntitySet Name="TB_USERROLESet" EntityType="Model1.TB_USERROLE" />
+          <EntitySet Name="TB_ROLESet" EntityType="Model1.TB_ROLE" />
+          <EntitySet Name="TB_MENUROLESet" EntityType="Model1.TB_MENUROLE" />
+          <EntitySet Name="TB_MENUSet" EntityType="Model1.TB_MENU" />
+          <AssociationSet Name="TB_DEPARTMENTTB_USERS" Association="Model1.TB_DEPARTMENTTB_USERS">
+            <End Role="TB_DEPARTMENT" EntitySet="TB_DEPARTMENTSet" />
+            <End Role="TB_USERS" EntitySet="TB_USERSSet" />
+          </AssociationSet>
+          <AssociationSet Name="TB_USERSTB_USERROLE" Association="Model1.TB_USERSTB_USERROLE">
+            <End Role="TB_USERS" EntitySet="TB_USERSSet" />
+            <End Role="TB_USERROLE" EntitySet="TB_USERROLESet" />
+          </AssociationSet>
+          <AssociationSet Name="TB_ROLETB_USERROLE" Association="Model1.TB_ROLETB_USERROLE">
+            <End Role="TB_ROLE" EntitySet="TB_ROLESet" />
+            <End Role="TB_USERROLE" EntitySet="TB_USERROLESet" />
+          </AssociationSet>
+          <AssociationSet Name="TB_MENUROLETB_ROLE" Association="Model1.TB_MENUROLETB_ROLE">
+            <End Role="TB_MENUROLE" EntitySet="TB_MENUROLESet" />
+            <End Role="TB_ROLE" EntitySet="TB_ROLESet" />
+          </AssociationSet>
+          <AssociationSet Name="TB_MENUTB_MENUROLE" Association="Model1.TB_MENUTB_MENUROLE">
+            <End Role="TB_MENU" EntitySet="TB_MENUSet" />
+            <End Role="TB_MENUROLE" EntitySet="TB_MENUROLESet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TB_DEPARTMENT">
+          <Key>
+            <PropertyRef Name="DEPARTMENT_ID" />
+          </Key>
+          <Property Name="DEPARTMENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEPARTMENT_NAME" Type="String" Nullable="false" />
+          <Property Name="PARENT_ID" Type="String" Nullable="false" />
+          <Property Name="DEPARTMENT_LEVEL" Type="String" Nullable="false" />
+          <Property Name="STATUS" Type="String" Nullable="false" />
+          <NavigationProperty Name="TB_USERS" />
+        </EntityType>
+        <EntityType Name="TB_USERS">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_NAME" Type="String" Nullable="false" />
+          <Property Name="USER_PASSWORD" Type="String" Nullable="false" />
+          <Property Name="FULLNAME" Type="String" Nullable="false" />
+          <Property Name="DEPARTMENT_ID" Type="String" Nullable="false" />
+          <Property Name="STATUS" Type="String" Nullable="false" />
+          <Property Name="REMARK" Type="String" Nullable="false" />
+          <NavigationProperty Name="TB_DEPARTMENT" />
+          <NavigationProperty Name="TB_USERROLE" />
+        </EntityType>
+        <EntityType Name="TB_USERROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" Nullable="false" />
+          <NavigationProperty Name="TB_USERS" />
+          <NavigationProperty Name="TB_ROLE" Relationship="Model1.TB_ROLETB_USERROLE" FromRole="TB_USERROLE" ToRole="TB_ROLE" />
+          <Property Name="ROLE_ID" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_ROLE">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROLE_NAME" Type="String" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" />
+          <Property Name="CREATETIME" Type="String" Nullable="false" />
+          <Property Name="MODIFYTIME" Type="String" Nullable="false" />
+          <Property Name="ROLE_DEFAULTURL" Type="String" Nullable="false" />
+          <NavigationProperty Name="TB_MENUROLE" />
+          <NavigationProperty Name="TB_USERROLE" />
+        </EntityType>
+        <EntityType Name="TB_MENUROLE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROLE_ID" Type="String" Nullable="false" />
+          <Property Name="MENU_ID" Type="String" Nullable="false" />
+          <Property Name="ROLE_TYPE" Type="String" Nullable="false" />
+          <Property Name="BUTTON_ID" Type="String" Nullable="false" />
+          <NavigationProperty Name="TB_MENU" />
+          <NavigationProperty Name="TB_ROLE" />
+          <Property Name="TB_MENUMENU_ID" Type="Int32" Nullable="true" />
+        </EntityType>
+        <EntityType Name="TB_MENU">
+          <Key>
+            <PropertyRef Name="MENU_ID" />
+          </Key>
+          <Property Name="MENU_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MENU_NAME" Type="String" Nullable="false" />
+          <Property Name="MENU_ICO" Type="String" Nullable="false" />
+          <NavigationProperty Name="TB_MENUROLE" />
+        </EntityType>
+        <Association Name="TB_DEPARTMENTTB_USERS">
+          <End Type="Model1.TB_DEPARTMENT" Role="TB_DEPARTMENT" Multiplicity="0..1" />
+          <End Type="Model1.TB_USERS" Role="TB_USERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_DEPARTMENT">
+              <PropertyRef Name="DEPARTMENT_ID" />
+            </Principal>
+            <Dependent Role="TB_USERS">
+              <PropertyRef Name="DEPARTMENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_USERSTB_USERROLE">
+          <End Type="Model1.TB_USERS" Role="TB_USERS" Multiplicity="0..1" />
+          <End Type="Model1.TB_USERROLE" Role="TB_USERROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="TB_USERROLE">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_ROLETB_USERROLE">
+          <End Type="Model1.TB_ROLE" Role="TB_ROLE" Multiplicity="0..1" />
+          <End Type="Model1.TB_USERROLE" Role="TB_USERROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="TB_USERROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_MENUROLETB_ROLE">
+          <End Type="Model1.TB_MENUROLE" Role="TB_MENUROLE" Multiplicity="*" />
+          <End Type="Model1.TB_ROLE" Role="TB_ROLE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="TB_MENUROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TB_MENUTB_MENUROLE">
+          <End Type="Model1.TB_MENU" Role="TB_MENU" Multiplicity="0..1" />
+          <End Type="Model1.TB_MENUROLE" Role="TB_MENUROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_MENU">
+              <PropertyRef Name="MENU_ID" />
+            </Principal>
+            <Dependent Role="TB_MENUROLE">
+              <PropertyRef Name="MENU_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1TargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

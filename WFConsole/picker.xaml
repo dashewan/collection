@@ -1,0 +1,188 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="WFConsole.picker" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WFConsole.picker_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:local="clr-namespace:WFConsole"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>WFConsole</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:List(x:String)" Modifiers="Mapped" Name="myCollection" />
+      <Variable x:TypeArguments="x:Int32" Name="r" />
+      <Variable x:TypeArguments="x:Int32" Default="1" Name="p1" />
+      <Variable x:TypeArguments="x:Int32" Default="2" Name="p2" />
+    </Sequence.Variables>
+    <InvokeMethod sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="myMethod2">
+      <InvokeMethod.Result>
+        <OutArgument x:TypeArguments="x:Int32">
+          <mca:CSharpReference x:TypeArguments="x:Int32">r</mca:CSharpReference>
+        </OutArgument>
+      </InvokeMethod.Result>
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="local:ClassMethod">
+          <mca:CSharpValue x:TypeArguments="local:ClassMethod">new ClassMethod()</mca:CSharpValue>
+        </InArgument>
+      </InvokeMethod.TargetObject>
+      <InArgument x:TypeArguments="x:Int32">
+        <mca:CSharpValue x:TypeArguments="x:Int32">p1</mca:CSharpValue>
+      </InArgument>
+      <OutArgument x:TypeArguments="x:Int32">
+        <mca:CSharpReference x:TypeArguments="x:Int32">p2</mca:CSharpReference>
+      </OutArgument>
+    </InvokeMethod>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_8">
+      <InArgument x:TypeArguments="x:String">
+        <mca:CSharpValue x:TypeArguments="x:String">r.ToString()</mca:CSharpValue>
+      </InArgument>
+    </WriteLine>
+    <CancellationScope sap2010:WorkflowViewState.IdRef="CancellationScope_1">
+      <local:ExceptionActivity Text="{x:Null}" sap2010:WorkflowViewState.IdRef="ExceptionActivity_1" />
+      <CancellationScope.CancellationHandler>
+        <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="CancellationHandler:取消" />
+      </CancellationScope.CancellationHandler>
+    </CancellationScope>
+    <TryCatch sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_4">
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">exception.Message</mca:CSharpValue>
+                </InArgument>
+              </WriteLine>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="A" />
+      </TryCatch.Finally>
+    </TryCatch>
+    <TerminateWorkflow sap2010:WorkflowViewState.IdRef="TerminateWorkflow_1" Reason="测试">
+      <TerminateWorkflow.Exception>
+        <InArgument x:TypeArguments="s:Exception">
+          <mca:CSharpValue x:TypeArguments="s:Exception">new Exception("终止流程")</mca:CSharpValue>
+        </InArgument>
+      </TerminateWorkflow.Exception>
+    </TerminateWorkflow>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="start" />
+    <AddToCollection x:TypeArguments="x:String" DisplayName="AddToCollection&lt;String&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="aaaaaaa">
+      <InArgument x:TypeArguments="scg:ICollection(x:String)">
+        <mca:CSharpValue x:TypeArguments="scg:ICollection(x:String)">myCollection</mca:CSharpValue>
+      </InArgument>
+    </AddToCollection>
+    <AddToCollection x:TypeArguments="x:String" DisplayName="AddToCollection&lt;String&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_2" Item="bbbbbbb">
+      <InArgument x:TypeArguments="scg:ICollection(x:String)">
+        <mca:CSharpValue x:TypeArguments="scg:ICollection(x:String)">myCollection</mca:CSharpValue>
+      </InArgument>
+    </AddToCollection>
+    <AddToCollection x:TypeArguments="x:String" DisplayName="AddToCollection&lt;String&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="ccccccc">
+      <InArgument x:TypeArguments="scg:ICollection(x:String)">
+        <mca:CSharpValue x:TypeArguments="scg:ICollection(x:String)">myCollection</mca:CSharpValue>
+      </InArgument>
+    </AddToCollection>
+    <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+      <ForEach.Values>
+        <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(x:String)">myCollection</mca:CSharpValue>
+        </InArgument>
+      </ForEach.Values>
+      <ActivityAction x:TypeArguments="x:String">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+        </ActivityAction.Argument>
+        <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1">
+          <InArgument x:TypeArguments="x:String">
+            <mca:CSharpValue x:TypeArguments="x:String">item</mca:CSharpValue>
+          </InArgument>
+        </WriteLine>
+      </ActivityAction>
+    </ForEach>
+    <RemoveFromCollection x:TypeArguments="x:String" DisplayName="RemoveFromCollection&lt;String&gt;" sap2010:WorkflowViewState.IdRef="RemoveFromCollection`1_1" Item="aaaaaaa">
+      <InArgument x:TypeArguments="scg:ICollection(x:String)">
+        <mca:CSharpValue x:TypeArguments="scg:ICollection(x:String)">myCollection</mca:CSharpValue>
+      </InArgument>
+    </RemoveFromCollection>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="end" />
+    <sads:DebugSymbol.Symbol>dytGOlxQcm9qZWN0c1xXRkNvbnNvbGVcV0ZDb25zb2xlXHBpY2tlci54YW1sKycDjwEOAgEBKzMrNgIBAywzLDYCAQIuBT8UAgFNQAVEEQIBR0UFShkCAUNLBV8QAgE4YAVmGQIBMWcFZ00CAS9oBWwXAgEobQVxFwIBIXIFdhcCARp3BYcBDwIBDYgBBYwBHAIBBo0BBY0BSwIBBDoJOkgCAV09CT1QAgFYMQsxUQIBUzYLNmMCAU5CCUJTAgFIRgdGaAIBRkgJSGICAURdCV1NAgFBUg1YGAIBOWBVYFkCATdjC2NhAgEyZ0NnSgIBMGoJamQCASpomAFooQECASlvCW9kAgEjbZgBbaEBAgEidAl0ZAIBHHKYAXKhAQIBG3oLemYCARWBAQmFARUCAQ6KAQmKAWQCAQiIAacBiAGwAQIBB40BQ40BSAIBBUhHSF8CAUVdR11KAgFCUw9XGwIBOoMBDYMBTwIBD1UTVWICATs=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="InvokeMethod_1" sap:VirtualizedContainerService.HintSize="418,138" />
+      <sap2010:ViewStateData Id="WriteLine_8" sap:VirtualizedContainerService.HintSize="418,63" />
+      <sap2010:ViewStateData Id="ExceptionActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="WriteLine_7" sap:VirtualizedContainerService.HintSize="213,63" />
+      <sap2010:ViewStateData Id="CancellationScope_1" sap:VirtualizedContainerService.HintSize="418,334" />
+      <sap2010:ViewStateData Id="WriteLine_4" sap:VirtualizedContainerService.HintSize="213,63" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="235,187">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="404,23">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_6" sap:VirtualizedContainerService.HintSize="213,63" />
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="418,297" />
+      <sap2010:ViewStateData Id="TerminateWorkflow_1" sap:VirtualizedContainerService.HintSize="418,22" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="418,63" />
+      <sap2010:ViewStateData Id="AddToCollection`1_1" sap:VirtualizedContainerService.HintSize="418,22" />
+      <sap2010:ViewStateData Id="AddToCollection`1_2" sap:VirtualizedContainerService.HintSize="418,22" />
+      <sap2010:ViewStateData Id="AddToCollection`1_3" sap:VirtualizedContainerService.HintSize="418,22" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="213,63" />
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="414,215" />
+      <sap2010:ViewStateData Id="RemoveFromCollection`1_1" sap:VirtualizedContainerService.HintSize="414,22" />
+      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="291,63" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="440,1847">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WFConsole.picker_1" sap:VirtualizedContainerService.HintSize="480,1927" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
