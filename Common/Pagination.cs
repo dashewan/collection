@@ -10,7 +10,7 @@ namespace Common
     {
         public string PageHtml()
         {
-
+            return "";
         }
     }
 }
