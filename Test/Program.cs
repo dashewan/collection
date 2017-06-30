@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Test
@@ -35,16 +36,18 @@ namespace Test
             //list.Add(b5);
             //DataTable dt= CovertModel.ListToTable<Blog>(list);
             //List<Blog> l =CovertModel.TableToList<Blog>(dt);
-            Template template = new Template(@"@extends('aa.html')@section('title', '医疗系统')@extends('aa.html')@section('title', '医疗系统')");
-            string html=template.Html;
+            Template template = new Template(@"@extends('aa.html')@section('title', 'fffff')@extends('aa.html')@section('title', '医疗系统')@foreach(a as b)dfdsfsdfdfdfdsfsd@endforeach");
+            string html = template.Html;
+            //string input = "1851 1999 1950 1905 2003";
+            //string pattern = @"(?<!19)\d{2}\b";
 
+            //foreach (Match match in Regex.Matches(input, pattern))
+            //    Console.WriteLine(match.Value);
         }
     }
     public class Blog
     {
         public int BlogId { get; set; }
         public string Name { get; set; }
-
-        
     }
 }
