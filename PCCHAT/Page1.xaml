@@ -18,6 +18,6 @@
 
         <TextBlock x:Name="txtName" Grid.Row="0" Text="TXT" />
         <TextBox x:Name="txtValue" Grid.Row="1" Text="111111"/>
-        <Custom:WebControl HorizontalAlignment="Left" Height="100" Margin="104,139,0,0" Grid.Row="2" VerticalAlignment="Top" Width="100"/>
+        <!--<Custom:WebControl HorizontalAlignment="Left" Height="100" Margin="104,139,0,0" Grid.Row="2" VerticalAlignment="Top" Width="100"/>-->
     </Grid>
 </Page>

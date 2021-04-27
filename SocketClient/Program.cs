@@ -14,12 +14,14 @@ namespace SocketClient
     {
         public static void Main()
         {
-            OnLine line = new OnLine();
-            Thread thread = new Thread(new ThreadStart(line.SendOnLine));
-            thread.Start();
-            Thread thread1 = new Thread(new ThreadStart(line.ReceiveOnLine));
-            thread1.Start();
-            Console.Read();
+            //OnLine line = new OnLine();
+            //Thread thread = new Thread(new ThreadStart(line.SendOnLine));
+            //thread.Start();
+            //Thread thread1 = new Thread(new ThreadStart(line.ReceiveOnLine));
+            //thread1.Start();
+            //Console.Read();
+            Chat chat = new Chat();
+            chat.Process();
         }
           
     }

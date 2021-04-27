@@ -70,9 +70,9 @@ namespace Common
             {
                 Match match = _foreach.Match(html);
                 GroupCollection coll = match.Groups;
-               foreach(var o in declareDic[coll[1].Value]){
+               //foreach(var o in declareDic[coll[1].Value]){
 
-               }
+               //}
                 html = html.Replace(coll[0].Value, "");
                 Generate();
             }

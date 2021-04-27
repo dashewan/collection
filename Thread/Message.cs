@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SocketServer
+namespace ThreadAsync
 {
     public class Message
     {
@@ -15,8 +15,8 @@ namespace SocketServer
                 if (person != null)
                 {
                     Person p = (Person)person;
-                    string message = string.Format("名字：{0}，年龄：{1}，当前线程：{2}，当前上下文：{3}", p.Name, p.Age, Thread.CurrentThread.ManagedThreadId, Thread.CurrentContext.ContextID);
-                    Console.WriteLine(message);
+                    //string message = string.Format("名字：{0}，年龄：{1}，当前线程：{2}，当前上下文：{3}", p.Name, p.Age, Thread.CurrentThread.ManagedThreadId, Thread.CurrentContext.ContextID);
+                    //Console.WriteLine(message);
                 }
                 for (int n = 0; n < 10; n++)
                 {
