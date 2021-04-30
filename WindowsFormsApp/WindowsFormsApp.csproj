@@ -12,6 +12,25 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>D:\publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://localhost:8080/</InstallUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +50,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8CA620E3E8CCF731DB519AC441D1B250010084C3</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WindowsFormsApp_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="IrisSkin4">
@@ -61,13 +92,49 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlowLayoutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlowLayoutForm.Designer.cs">
+      <DependentUpon>FlowLayoutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProcessControl.Designer.cs">
+      <DependentUpon>ProcessControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UseControl\Circle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UseControl\Circle.Designer.cs">
+      <DependentUpon>Circle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UseControl\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UseControl\RoundButton.Designer.cs">
+      <DependentUpon>RoundButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WebBrower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WebBrower.Designer.cs">
+      <DependentUpon>WebBrower.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ChildForm2.resx">
       <DependentUpon>ChildForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlowLayoutForm.resx">
+      <DependentUpon>FlowLayoutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcessControl.resx">
+      <DependentUpon>ProcessControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,6 +145,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UseControl\Circle.resx">
+      <DependentUpon>Circle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UseControl\RoundButton.resx">
+      <DependentUpon>RoundButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WebBrower.resx">
+      <DependentUpon>WebBrower.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -160,6 +236,7 @@
     <None Include="Skins\WinXP\XPGreen.ssk" />
     <None Include="Skins\WinXP\XPOrange.ssk" />
     <None Include="Skins\WinXP\XPSilver.ssk" />
+    <None Include="WindowsFormsApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -238,6 +315,18 @@
     <Content Include="Skins\WinXP\xpgreen.gif" />
     <Content Include="Skins\WinXP\xporange.gif" />
     <Content Include="Skins\WinXP\xpsilver.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,14 +10,19 @@ namespace ThreadAsync
         delegate string MyDelegate(string name);
         static void Main(string[] args)
         {
-            Console.WriteLine("我是主线程，线程ID：{0}", Thread.CurrentThread.ManagedThreadId);
-            TestAsync();
-            ThreadPool.SetMaxThreads(8, 8);
-            ThreadPool.SetMinThreads(4, 4);
-            for(int i=0;i<100; i++){
-                ThreadPool.QueueUserWorkItem(new WaitCallback(Program.callback), i);
+            //Console.WriteLine("我是主线程，线程ID：{0}", Thread.CurrentThread.ManagedThreadId);
+            //TestAsync();
+            //ThreadPool.SetMaxThreads(8, 8);
+            //ThreadPool.SetMinThreads(4, 4);
+            //for(int i=0;i<100; i++){
+            //    ThreadPool.QueueUserWorkItem(new WaitCallback(Program.callback), i);
+            //}
+            ThreadWork work = new ThreadWork();
+            for (int i = 0; i < 100; i++)
+            {
+                //work.Thread(i);
+                work.AsyncWork(i);
             }
-            
             Console.ReadLine();
         }
         public static void callback(object threadContext)
