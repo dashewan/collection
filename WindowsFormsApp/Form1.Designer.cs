@@ -41,13 +41,14 @@
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btnWeb = new System.Windows.Forms.Button();
+            this.btnDelegate = new System.Windows.Forms.Button();
             this.toolStripContainer1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(54, 50);
+            this.button1.Location = new System.Drawing.Point(61, 107);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -57,7 +58,7 @@
             // 
             // btnLayoutFlow
             // 
-            this.btnLayoutFlow.Location = new System.Drawing.Point(333, 50);
+            this.btnLayoutFlow.Location = new System.Drawing.Point(341, 107);
             this.btnLayoutFlow.Name = "btnLayoutFlow";
             this.btnLayoutFlow.Size = new System.Drawing.Size(75, 23);
             this.btnLayoutFlow.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             // btnProcess
             // 
-            this.btnProcess.Location = new System.Drawing.Point(191, 50);
+            this.btnProcess.Location = new System.Drawing.Point(176, 107);
             this.btnProcess.Name = "btnProcess";
             this.btnProcess.Size = new System.Drawing.Size(75, 23);
             this.btnProcess.TabIndex = 3;
@@ -80,7 +81,7 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(633, 175);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(633, 150);
             this.toolStripContainer1.Location = new System.Drawing.Point(44, 312);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.Size = new System.Drawing.Size(633, 175);
@@ -135,7 +136,7 @@
             // 
             // btnWeb
             // 
-            this.btnWeb.Location = new System.Drawing.Point(467, 50);
+            this.btnWeb.Location = new System.Drawing.Point(467, 107);
             this.btnWeb.Name = "btnWeb";
             this.btnWeb.Size = new System.Drawing.Size(75, 23);
             this.btnWeb.TabIndex = 10;
@@ -143,12 +144,23 @@
             this.btnWeb.UseVisualStyleBackColor = true;
             this.btnWeb.Click += new System.EventHandler(this.btnWeb_Click);
             // 
+            // btnDelegate
+            // 
+            this.btnDelegate.Location = new System.Drawing.Point(622, 107);
+            this.btnDelegate.Name = "btnDelegate";
+            this.btnDelegate.Size = new System.Drawing.Size(75, 23);
+            this.btnDelegate.TabIndex = 11;
+            this.btnDelegate.Text = "控件委托";
+            this.btnDelegate.UseVisualStyleBackColor = true;
+            this.btnDelegate.Click += new System.EventHandler(this.btnDelegate_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDelegate);
             this.Controls.Add(this.btnWeb);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.maskedTextBox2);
@@ -158,7 +170,7 @@
             this.Controls.Add(this.btnLayoutFlow);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "主页";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ClientSizeChanged += new System.EventHandler(this.Form1_ClientSizeChanged);
             this.toolStripContainer1.ResumeLayout(false);
@@ -182,6 +194,7 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button btnWeb;
+        private System.Windows.Forms.Button btnDelegate;
     }
 }
 

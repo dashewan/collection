@@ -17,12 +17,14 @@ namespace ThreadAsync
             //for(int i=0;i<100; i++){
             //    ThreadPool.QueueUserWorkItem(new WaitCallback(Program.callback), i);
             //}
-            ThreadWork work = new ThreadWork();
-            for (int i = 0; i < 100; i++)
-            {
-                //work.Thread(i);
-                work.AsyncWork(i);
-            }
+            //ThreadWork work = new ThreadWork();
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    //work.Thread(i);
+            //    work.AsyncWork(i);
+            //}
+            TaskDemo taskDemo = new TaskDemo();
+            taskDemo.TaskTest();
             Console.ReadLine();
         }
         public static void callback(object threadContext)

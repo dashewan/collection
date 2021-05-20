@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +17,10 @@ namespace WindowsFormsApp
         public Form1()
         {
             InitializeComponent();
-            
+            //var materialSkinManager = MaterialSkinManager.Instance;
+            //materialSkinManager.AddFormToManage(this);
+            //materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            //materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,12 +34,21 @@ namespace WindowsFormsApp
             this.WindowState = FormWindowState.Normal;
             this.WindowState = FormWindowState.Maximized;
         }
-
+        public delegate string dd(string a1, string a2);
         private void button2_Click(object sender, EventArgs e)
         {
             //LayoutMdi(MdiLayout.TileVertical);
             FlowLayoutForm flowLayout = new FlowLayoutForm();
             flowLayout.Show();
+            //Action<string,string> action = MessageShow;
+            dd d1 = new dd(MessageShow);
+           IAsyncResult result= flowLayout.BeginInvoke(d1, "aa", "bbb");
+           object obj= flowLayout.EndInvoke(result);
+        }
+        public string  MessageShow(string a1,string a2)
+        {
+            MessageBox.Show(a1 + a2);
+            return "dddd";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -102,6 +116,12 @@ namespace WindowsFormsApp
         {
             WebBrower web = new WebBrower();
             web.Show();
+        }
+
+        private void btnDelegate_Click(object sender, EventArgs e)
+        {
+            DelegateForm delegateForm = new DelegateForm();
+            delegateForm.Show();
         }
     }
 }
